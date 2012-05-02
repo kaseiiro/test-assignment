@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  namae: MyString
+  contacts: MyString
+  status: 1
+  salary: 1
+
+two:
+  namae: MyString
+  contacts: MyString
+  status: 1
+  salary: 1

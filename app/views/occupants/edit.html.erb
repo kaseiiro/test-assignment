@@ -1,0 +1,25 @@
+﻿<h1>Редактирование информации о работнике</h1>
+
+<%= render 'form' %>
+
+<b>Умения:</b><br />
+<% @occupant.oskills.each do |oskill| %>
+    <%= oskill.description %> <%= link_to '[x]', [oskill.occupant, oskill],
+               :confirm => 'Вы уверены?',
+               :method => :delete %>
+    <br />
+<% end %>
+
+<h2>Добавить умение</h2>
+<%= form_for [@occupant, @occupant.oskills.build] do |f| %>
+  <div class="field">
+    <%= f.label :'Название умения' %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Показать', @occupant %> |
+<%= link_to 'Назад', occupants_path %>

@@ -1,0 +1,33 @@
+﻿<%= form_for(@occupant) do |f| %>
+  <% if @occupant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
+
+      <ul>
+      <% @occupant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :'Имя' %><br />
+    <%= f.text_field :namae %>
+  </div>
+  <div class="field">
+    <%= f.label :'Телефон или e-mail' %><br />
+    <%= f.text_field :contacts %>
+  </div>
+  <div class="field">
+    <%= f.label :'Статус' %><br />
+    <%= f.check_box :status %>
+  </div>
+  <div class="field">
+    <%= f.label :'Желаемая зарплата' %><br />
+    <%= f.number_field :salary %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

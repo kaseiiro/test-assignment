@@ -1,0 +1,31 @@
+﻿<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Название:</b>
+  <%= @job_list.title %>
+</p>
+
+<p>
+  <b>Дата добавления:</b>
+  <%= @job_list.add %>
+</p>
+
+<p>
+  <b>Срок действия:</b>
+  <%= @job_list.expire %>
+</p>
+
+<p>
+  <b>Зарплата:</b>
+  <%= @job_list.salary %>
+</p>
+
+<p>
+  <b>Контактная информация:</b>
+  <%= @job_list.contacts %>
+</p>
+
+<b>Умения:</b> <%= join_jskills(@job_list) %><br /><br />
+
+<%= link_to 'Редактировать', edit_job_list_path(@job_list) %> |
+<%= link_to 'Назад', job_lists_path %>

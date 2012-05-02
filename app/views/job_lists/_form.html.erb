@@ -1,0 +1,37 @@
+﻿<%= form_for(@job_list) do |f| %>
+  <% if @job_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_list.errors.count, "error") %> prohibited this job_list from being saved:</h2>
+
+      <ul>
+      <% @job_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Название' %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label 'Дата добавления' %><br />
+    <%= f.date_select :add %>
+  </div>
+  <div class="field">
+    <%= f.label 'Срок действия' %><br />
+    <%= f.date_select :expire %>
+  </div>
+  <div class="field">
+    <%= f.label 'Зарплата' %><br />
+    <%= f.number_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label 'Контактная информация' %><br />
+    <%= f.text_field :contacts %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

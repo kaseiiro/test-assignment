@@ -1,0 +1,25 @@
+﻿<h1>Редактировать вакансию</h1>
+
+<%= render 'form' %>
+
+<b>Умения:</b><br />
+<% @job_list.jskills.each do |jskill| %>
+    <%= jskill.description %> <%= link_to '[x]', [jskill.job_list, jskill],
+               :confirm => 'Вы уверены?',
+               :method => :delete %>
+    <br />
+<% end %>
+
+<h2>Добавить умение</h2>
+<%= form_for [@job_list, @job_list.jskills.build] do |f| %>
+  <div class="field">
+    <%= f.label :'Название умения' %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Просмотреть', @job_list %> |
+<%= link_to 'Назад', job_lists_path %>

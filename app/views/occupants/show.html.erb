@@ -1,0 +1,27 @@
+﻿<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Имя:</b>
+  <%= @occupant.namae %>
+</p>
+
+<p>
+  <b>Контактная информация:</b>
+  <%= @occupant.contacts %>
+</p>
+
+<p>
+  <b>Статус:</b>
+  <%= @occupant.status == 1 ? 'В поиске':'' %>
+</p>
+
+<p>
+  <b>Желаемая зарплата:</b>
+  <%= @occupant.salary %>
+</p>
+
+<b>Умения:</b> <%= join_skills(@occupant) %><br /><br />
+
+
+<%= link_to 'Редактировать', edit_occupant_path(@occupant) %> |
+<%= link_to 'Назад', occupants_path %>

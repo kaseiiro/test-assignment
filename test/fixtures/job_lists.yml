@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  add: 2012-04-30
+  expire: 2012-04-30
+  salary: 1
+  contacts: MyString
+
+two:
+  title: MyString
+  add: 2012-04-30
+  expire: 2012-04-30
+  salary: 1
+  contacts: MyString

@@ -1,0 +1,2 @@
+module JskillsHelper
+end

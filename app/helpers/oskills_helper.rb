@@ -1,0 +1,2 @@
+module OskillsHelper
+end
