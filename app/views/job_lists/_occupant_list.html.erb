@@ -1,0 +1,20 @@
+﻿<% if @occupants.size > 0 %>
+<table>
+  <tr>
+    <th>Имя</th>
+    <th>Контактная информация</th>
+    <th>Желаемая зарплата</th>
+  </tr>
+
+<% @occupants.each do |occupant| %>
+  <tr>
+    <td><%= link_to occupant.namae, occupant %></td>
+    <td><%= occupant.contacts %></td>
+    <td align = "right"><%= occupant.salary %></td>
+  </tr>
+<% end %>
+</table>
+<% else %>
+<p>Подходящих работников не найдено.</p>
+<% end %>
+<br /><br />

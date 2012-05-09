@@ -1,5 +1,7 @@
 ﻿<p id="notice"><%= notice %></p>
 
+<h2>Информация о работнике</h2>
+
 <p>
   <b>Имя:</b>
   <%= @occupant.namae %>
@@ -22,6 +24,13 @@
 
 <b>Умения:</b> <%= join_skills(@occupant) %><br /><br />
 
+<h2>Полностью походящие вакансии</h2>
+<% @job_lists = @fully_compatible_job_lists %>
+<%= render 'job_list_list' %>
+
+<h2>Частично походящие вакансии</h2>
+<% @job_lists = @partially_compatible_job_lists %>
+<%= render 'job_list_list' %>
 
 <%= link_to 'Редактировать', edit_occupant_path(@occupant) %> |
-<%= link_to 'Назад', occupants_path %>
+<%= link_to 'К списку работников', occupants_path %>

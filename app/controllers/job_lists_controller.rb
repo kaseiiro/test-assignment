@@ -1,4 +1,5 @@
-class JobListsController < ApplicationController
+﻿class JobListsController < ApplicationController
+
   # GET /job_lists
   # GET /job_lists.json
   def index
@@ -14,6 +15,28 @@ class JobListsController < ApplicationController
   # GET /job_lists/1.json
   def show
     @job_list = JobList.find(params[:id])
+    
+    @d_list = Array.new                                                                                                              # список требуемых умений (пока пустой)
+    @descriptions = @job_list.jskills.select("description").where(:id => @job_list.jskills)   # умения из id в текст
+    @descriptions.each do |d|                                                                                                  #
+        @d_list << d.description                                                                                                 # заполнение списка умений
+    end                                                                                                                                       #
+    @good_skills_with_occupant_id = Oskill.select("occupant_id").where(:description => @d_list)                  # выбор подходящих умений среди всех кандидатов
+    @id_list = Array.new                                                                                                        # список id подходящих работников (с дублями)
+    @good_skills_with_occupant_id.each do |s|                                                                #
+        @id_list << s.occupant_id                                                                                           # заполнение списка id
+    end                                                                                                                                    #
+    @id_list_unique = @id_list.uniq                                                                                     # список уникальных id
+    @fully_compatible_occupant_ids = Array.new                                                             # список работников, полностью подходящих по набору умений (пока пустой)
+    @id_list_unique.each do |i|                                                                                            #
+        if @id_list.find_all{ |ii| ii == i }.size == @d_list.size                                                   #
+          @fully_compatible_occupant_ids << i                                                                     # заполнение списка id работников, полностью подходящих по набору умений
+        end                                                                                                                                #
+    end                                                                                                                                    #
+    @partially_compatible_occupant_ids = @id_list_unique - @fully_compatible_occupant_ids   # заполнение списка id работников, частично подходящих по набору умений
+
+    @fully_compatible_occupants = Occupant.where(:status => 1, :id => @fully_compatible_occupant_ids).order("salary ASC")
+    @partially_compatible_occupants = Occupant.where(:status => 1, :id => @partially_compatible_occupant_ids).order("salary ASC")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,4 +103,6 @@ class JobListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
 end

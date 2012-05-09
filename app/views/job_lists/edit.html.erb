@@ -10,6 +10,8 @@
     <br />
 <% end %>
 
+<p id="notice"><%= notice %></p>
+
 <h2>Добавить умение</h2>
 <%= form_for [@job_list, @job_list.jskills.build] do |f| %>
   <div class="field">

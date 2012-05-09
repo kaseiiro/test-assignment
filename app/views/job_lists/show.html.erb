@@ -1,5 +1,7 @@
 ﻿<p id="notice"><%= notice %></p>
 
+<h2>Описание вакансии</h2>
+
 <p>
   <b>Название:</b>
   <%= @job_list.title %>
@@ -27,5 +29,16 @@
 
 <b>Умения:</b> <%= join_jskills(@job_list) %><br /><br />
 
+
+<h2>Полностью походящие работники</h2>
+
+<% @occupants = @fully_compatible_occupants %>
+<%= render 'occupant_list' %>
+
+<h2>Частично походящие работники</h2>
+<% @occupants = @partially_compatible_occupants %>
+<%= render 'occupant_list' %>
+
+
 <%= link_to 'Редактировать', edit_job_list_path(@job_list) %> |
-<%= link_to 'Назад', job_lists_path %>
+<%= link_to 'К списку вакансий', job_lists_path %>

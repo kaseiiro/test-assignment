@@ -1,0 +1,20 @@
+﻿<% if @job_lists.size > 0 %>
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Контактная информация</th>
+    <th>Желаемая зарплата</th>
+  </tr>
+
+<% @job_lists.each do |job_list| %>
+  <tr>
+    <td><%= link_to job_list.title, job_list %></td>
+    <td><%= job_list.contacts %></td>
+    <td align = "right"><%= job_list.salary %></td>
+  </tr>
+<% end %>
+</table>
+<% else %>
+<p>Подходящих вакансий не найдено.</p>
+<% end %>
+<br /><br />

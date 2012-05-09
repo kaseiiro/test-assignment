@@ -1,7 +1,7 @@
 ﻿<%= form_for(@occupant) do |f| %>
   <% if @occupant.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
+      <h2>Пожалуйста, устраните перечисленные ошибки.</h2>
 
       <ul>
       <% @occupant.errors.full_messages.each do |msg| %>

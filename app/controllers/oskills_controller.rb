@@ -1,9 +1,14 @@
-class OskillsController < ApplicationController
+﻿class OskillsController < ApplicationController
 
   def create
     @occupant = Occupant.find(params[:occupant_id])
-    @oskill = @occupant.oskills.create(params[:oskill])
-    redirect_to edit_occupant_path(@occupant)
+    if @occupant.oskills.where(params[:oskill]).exists? == false
+      @oskill = @occupant.oskills.create(params[:oskill])
+      error = 'Навык добавлен.'
+    else
+      error = 'Навык уже добавлен ранее.'
+    end
+    redirect_to edit_occupant_path(@occupant), notice: error
   end
   
   def destroy
